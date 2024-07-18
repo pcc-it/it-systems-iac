@@ -35,10 +35,11 @@
     "CPUs": 2,
     "RAM": 4096,
     "disk_size": 20480,
-    "disk_thin_provisioned": true
+    "disk_thin_provisioned": true,
     "vmx_data": {
       "firmware": "efi",
       "efi_secure_boot_enabled": "FALSE"
+    }
   }],
   "provisioners": [{
     "type": "shell",
