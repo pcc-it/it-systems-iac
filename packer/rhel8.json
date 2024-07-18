@@ -7,7 +7,7 @@
     "cluster": "",
     "datastore": "",
     "network": "",
-    "template_name": "rhel8-template"
+    "template_name": "rhel8-template-dev"
   },
   "builders": [{
     "type": "vsphere-iso",
@@ -36,6 +36,9 @@
     "RAM": 4096,
     "disk_size": 20480,
     "disk_thin_provisioned": true
+    "vmx_data": {
+      "firmware": "efi",
+      "efi_secure_boot_enabled": "FALSE"
   }],
   "provisioners": [{
     "type": "shell",
