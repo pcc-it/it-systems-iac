@@ -1,0 +1,48 @@
+{
+  "variables": {
+    "vcenter_server": "",
+    "username": "",
+    "password": "",
+    "datacenter": "",
+    "cluster": "",
+    "datastore": "",
+    "network": "",
+    "template_name": "rhel8-template"
+  },
+  "builders": [{
+    "type": "vsphere-iso",
+    "vcenter_server": "{{user `vcenter_server`}}",
+    "username": "{{user `username`}}",
+    "password": "{{user `password`}}",
+    "datacenter": "{{user `datacenter`}}",
+    "cluster": "{{user `cluster`}}",
+    "datastore": "{{user `datastore`}}",
+    "network": "{{user `network`}}",
+    "folder": "VMs",
+    "vm_name": "packer-rhel8",
+    "insecure_connection": "true",
+    "convert_to_template": "true",
+    "guest_os_type": "rhel8_64Guest",
+    "disk_controller_type": "pvscsi",
+    "network_card": "vmxnet3",
+    "iso_paths": [
+      "[datastore1] ISO/RHEL-8.3-x86_64-dvd.iso"
+    ],
+    "ssh_username": "root",
+    "ssh_password": "password",
+    "ssh_wait_timeout": "20m",
+    "shutdown_command": "shutdown -P now",
+    "CPUs": 2,
+    "RAM": 4096,
+    "disk_size": 20480,
+    "disk_thin_provisioned": true
+  }],
+  "provisioners": [{
+    "type": "shell",
+    "inline": [
+      "dnf install -y vim",
+      "echo 'Packer build completed!'"
+    ]
+  }]
+}
+
